@@ -1,7 +1,13 @@
+use crate::errors::Result;
 use crate::errors::*;
-use crate::vector::{Geometry, ToGdal};
+use crate::vector::Geometry;
 use gdal_sys::OGRwkbGeometryType;
 use geo_types::CoordFloat;
+
+/// Convert object to a GDAL geometry.
+pub trait ToGdal {
+    fn to_gdal(&self) -> Result<Geometry>;
+}
 
 impl<T> ToGdal for geo_types::Point<T>
 where

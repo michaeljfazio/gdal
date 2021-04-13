@@ -17,8 +17,8 @@
 
 mod defn;
 mod feature;
-mod gdal_to_geo;
-mod geo_to_gdal;
+pub mod gdal_to_geo;
+pub mod geo_to_gdal;
 mod geometry;
 mod layer;
 mod ops;
@@ -30,13 +30,6 @@ pub use gdal_sys::{OGRFieldType, OGRwkbGeometryType};
 pub use geometry::Geometry;
 pub use layer::{FeatureIterator, FieldDefn, Layer, LayerCaps};
 pub use ops::GeometryIntersection;
-
-use crate::errors::Result;
-
-/// Convert object to a GDAL geometry.
-pub trait ToGdal {
-    fn to_gdal(&self) -> Result<Geometry>;
-}
 
 #[cfg(test)]
 mod vector_tests;
